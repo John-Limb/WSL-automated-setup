@@ -35,7 +35,7 @@ IF EXIST .\dev-env.tar.gz (
     wsl --set-default-version 2
     wsl --import dev-env c:\wsl .\output\dev-env.tar.gz
     wsl --set-default dev-env
-    GOTO Cleanup
+    GOTO Cleanup;
 
 :Cleanup
     echo Begginging Cleanup
@@ -43,4 +43,4 @@ IF EXIST .\dev-env.tar.gz (
     rmdir .\builderInstall
     sleep 2
     end
-    
+
