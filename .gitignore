@@ -1,2 +1,3 @@
 installDir/
 dev-env.tar.gz
+*.vhdx
