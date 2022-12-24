@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 #update and install docker
 apk add --update docker
 sleep 5
