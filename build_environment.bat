@@ -17,9 +17,8 @@ IF EXIST .\dev-env.tar.gz (
     wsl --set-default-version 2
     wsl --import builder .\builderInstall .\resources\builder\alpine-builder.tar.gz --version 2
     wsl -d builder -u root sh -c "resources/builder/build-container.sh %USERNAME%"
-    
-    wsl --unregister builder
-    rmdir .\builderInstall
+    sleep 3
+    cls
     GOTO Import;
 
 :Docker
@@ -34,5 +33,14 @@ IF EXIST .\dev-env.tar.gz (
 :Import
     rem [32m Importing the new distro [0m
     wsl --set-default-version 2
-    wsl --import dev-env c:\wsl .\dev-env.tar.gz
+    wsl --import dev-env c:\wsl .\output\dev-env.tar.gz
     wsl --set-default dev-env
+    GOTO Cleanup
+
+:Cleanup
+    echo Begginging Cleanup
+    wsl --unregister builder
+    rmdir .\builderInstall
+    sleep 2
+    end
+    
