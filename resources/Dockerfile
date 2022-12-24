@@ -17,7 +17,11 @@ RUN curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/s
 #install keyring
 RUN echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
 RUN apt-get update -y && apt-get -y install helm
-RUN apt-get install age
+#install age
+RUN wget -O age.tar.gz https://github.com/FiloSottile/age/releases/download/v1.0.0/age-v1.0.0-linux-amd64.tar.gz
+RUN tar xf age.tar.gz
+RUN mv age/age /usr/local/bin
+RUN mv age/age-keygen /usr/local/bin
 #Install SOPS for file encryption
 RUN wget https://github.com/mozilla/sops/releases/download/v3.7.3/sops_3.7.3_amd64.deb
 RUN sudo dpkg -i ./sops_3.7.3_amd64.deb
