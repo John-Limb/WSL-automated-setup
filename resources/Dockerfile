@@ -38,7 +38,6 @@ RUN curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/
 
 #Install VS code server
 RUN sudo curl -fsSL https://code-server.dev/install.sh | sh
-RUN systemctl --user enable --now code-server
 #Add current user to environment 
 RUN /bin/bash -c 'useradd -m -s /bin/bash -g root ${USER}; echo "${USER}:PassW0rd" | chpasswd'
 
