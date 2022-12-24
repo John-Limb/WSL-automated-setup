@@ -16,7 +16,7 @@ IF EXIST .\dev-env.tar.gz (
     rem [32m Building Docker container using builder distro [0m
     wsl --set-default-version 2
     wsl --import builder .\builderInstall .\resources\builder\alpine-builder.tar.gz --version 2
-    wsl -d builder -u root sh -c "resources/builder/build-tar.sh %USERNAME%"
+    wsl -d builder -u root sh -c "resources/builder/build-container.sh %USERNAME%"
     
     wsl --unregister builder
     rmdir .\builderInstall
