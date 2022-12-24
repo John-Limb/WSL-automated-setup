@@ -34,5 +34,5 @@ IF EXIST .\dev-env.tar.gz (
 :Import
     rem [32m Importing the new distro [0m
     wsl --set-default-version 2
-    wsl --import dev-env .\installDir .\dev-env.tar.gz
+    wsl --import dev-env .\dev-env.tar.gz
     wsl --set-default dev-env
