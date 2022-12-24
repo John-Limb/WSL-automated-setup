@@ -11,11 +11,11 @@ RUN apt-get update -y && apt-get -y install python iputils-ping \
  
 ## now we have curl installed we can add the other repos etc.
 #Add google keyring for k8s cli
-RUN sudo curl -fsSLo /etc/apt/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 #Add keyring for Helm
 RUN curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
 #install keyring
-RUN apt-get update -y && apt-get -y install kubectl helm age
+RUN apt-get update -y && apt-get -y install helm age
 RUN echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
 #Install SOPS for file encryption
 RUN wget https://github.com/mozilla/sops/releases/download/v3.7.3/sops_3.7.3_amd64.deb
