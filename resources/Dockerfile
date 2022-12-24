@@ -4,7 +4,7 @@ FROM ubuntu:22.10
 ARG USER  
 
 #Install base applications
-RUN apt-get update -y && apt-get -y install python iputils-ping \
+RUN apt-get update -y && apt-get -y install iputils-ping \
     iproute2 openssh-client openssh-server curl wget vim passwd sudo \
     apt-transport-https ca-certificates \
     software-properties-common git-all
