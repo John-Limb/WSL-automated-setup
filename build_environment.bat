@@ -27,7 +27,7 @@ IF EXIST .\dev-env.tar.gz (
     rem [32m Building Docker container [0m
     docker build --build-arg USER=%USERNAME% -t dev-env -f resources\Dockerfile .
     docker run --name dev-env dev-env
-    docker export --output="dev-env.tar.gz" dev-env
+    docker export --output="output/dev-env.tar.gz" dev-env
     docker container rm dev-env
     docker rmi dev-env
 
