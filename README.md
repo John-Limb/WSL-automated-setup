@@ -1,5 +1,5 @@
 # WSL Automated Setup
-
+[![Lint Code Base](https://github.com/John-Limb/wsl-automated-setup/actions/workflows/super-linter.yml/badge.svg?branch=master)](https://github.com/John-Limb/wsl-automated-setup/actions/workflows/super-linter.yml)
 <table>
     <tr>
         <td>
