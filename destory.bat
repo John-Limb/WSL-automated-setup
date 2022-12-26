@@ -1,3 +1,4 @@
+@echo on
 rem [32m Remove the distro from WSL [0m
 wsl --unregister dev-env
 timeout 5
