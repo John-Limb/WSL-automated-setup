@@ -1,5 +1,5 @@
 #!/bin/sh
-
+set -euo pipefail
 #Install base applications
 apt-get update -y && apt-get -y install iputils-ping \
     iproute2 openssh-client openssh-server curl wget vim passwd sudo \
@@ -27,8 +27,11 @@ sudo dpkg -i ./sops_3.7.3_amd64.deb
 rm ./sops_3.7.3_amd64.deb
 #install flux
 curl -s https://fluxcd.io/install.sh | sudo bash
-#Install kustomize
-curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
 
 #Install VS code server
 sudo curl -fsSL https://code-server.dev/install.sh | sh
+
+#install and setup zsh
+apt install zsh
+#install brew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"

@@ -19,7 +19,7 @@ RUN /bin/bash -c 'useradd -m -s /bin/bash -g root ${USER}; echo "${USER}:PassW0r
 COPY ./resources/wsl.conf /etc/wsl.conf
 RUN /bin/bash -c 'echo "default=${USER}" >> /etc/wsl.conf; \
     echo "${USER} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers;'
-
+RUN systemctl enable --now code-server@$USER
 #Set the default user
 USER $USER
 
