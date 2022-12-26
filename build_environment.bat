@@ -17,7 +17,7 @@ IF EXIST .\dev-env.tar.gz (
     wsl --set-default-version 2
     wsl --import builder .\builderInstall .\resources\builder\alpine-builder.tar.gz --version 2
     wsl -d builder -u root sh -c "resources/builder/build-container.sh %USERNAME%"
-    sleep 3
+    timeout 3
     cls
     GOTO Import;
 
@@ -25,7 +25,7 @@ IF EXIST .\dev-env.tar.gz (
     echo on
     rem [32m Building Docker container [0m
     docker build --build-arg USER=%USERNAME% -t dev-env -f resources\Dockerfile .
-    sleep 10
+    timeout 10
     docker run --name dev-env dev-env
     docker export --output="dev-env.tar.gz" dev-env
     docker container rm dev-env
@@ -42,6 +42,6 @@ IF EXIST .\dev-env.tar.gz (
     echo Begginging Cleanup
     wsl --unregister builder
     rmdir .\builderInstall
-    sleep 2
-    end
+    timeout 10
+    exit
 
