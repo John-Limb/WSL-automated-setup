@@ -5,8 +5,12 @@ ENV TZ=Europe/London
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 # Add user
 ARG USER
-#Run container build script
-RUN resources/dev-env.sh
+
+RUN mkdir -p /scripts
+COPY /resources/bootstrap.sh /scripts
+WORKDIR /scripts
+RUN chmod +x bootstrap.sh
+RUN ./bootstrap.sh
 
 #Add current user to environment 
 RUN /bin/bash -c 'useradd -m -s /bin/bash -g root ${USER}; echo "${USER}:PassW0rd" | chpasswd'

@@ -1,3 +1,4 @@
+#!/bin/sh
 #Install base applications
 apt-get update -y && apt-get -y install iputils-ping \
     iproute2 openssh-client openssh-server curl wget vim passwd sudo \
