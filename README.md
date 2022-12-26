@@ -1,5 +1,4 @@
 # WSL Automated Setup
-# Cloned from [WSL-Automated-Setup](https://github.com/n-murray/wsl-automated-setup)
 
 <table>
     <tr>
@@ -22,51 +21,23 @@ ___
 > ### Prerequisites
 > For the installation you will need the following:
 > - Git (If cloning the repository)
-
-**Docker Desktop is now optional**
-
-If not installed a minimal Alpine Linux distro will be installed and act as a builder which will install Docker and create our distro.
-Once installation is complete the builder distro is removed.
-
-___
 ### If WSL is enabled already
 If you have got WSL and WSL2 enabled already on your computer and you have Docker Desktop installed you simply
-need to run the ***"build_environment.bat"*** file in this folder. This script will build a Docker container using a
+need to run the ***"init.ps1"*** file in this folder. This script will build a Docker container using a
 Dockerfile which installs the required for sysadmin / k8s admin  eg... kubernetes cli, ansible, helm, sops etc.   ***If the tar file "dev-env.tar.gz" already exists from previous runs it will be used instead of recreating it.***
 
-If for whatever reason you want to remove the installed WSL distro you can run the ***"remove_environment.bat"***
+If for whatever reason you want to remove the installed WSL distro you can run the ***"destroy.ps1"***
 which will remove the distro and the network configurations. To re-install the custom WSL distro again just 
-re-run the build_environment.bat and it will install a fresh distro.
+re-run the init.ps1 and it will install a fresh distro.
 ___
 ### If WSL is not already enabled on your computer
-If you have not got WSL enabled and you are using Windows 10 version 2004 or higher you can install WSL by simply running the following command in an administrator Powershell or Command Prompt window.
+If you have not got WSL enabled and you are using Windows 10 version 2004 or higher the init.ps1 script will detect and install it for you. You are then required to reboot and rerun the init.ps1 script. 
 
-```
-    wsl --install
-```
-
-This command will enable all of the required components, download the latest Linux kernel and set WSL 2 as your default while also installing Ubuntu by default.
+This command will enable all of the required components, download the latest Linux kernel and set WSL 2 as your default.
 
 ***For more information check the official documentation below***
 
 > https://docs.microsoft.com/en-us/windows/wsl/install
 
-___
-If you have an older version of Windows 10 you can enable WSL by running the scripts found in the "Initial WSL install scripts" folder. 
-These scripts will enable the required features and download the required kernel update for WSL2 and install it.
-The commands in these scripts are from the official Microsoft installation guide: https://docs.microsoft.com/en-us/windows/wsl/install-win10
-I have just automated the instructions using batch files, however you can just follow that guide if 
-you would prefer not to run them.
-
-### Brief Script Expalanation:
-
-enable-wsl2-part1.bat:
-This script enables the WSL and Virtual machine platform optional Windows features that are
-needed to run WSL and WSL2
-
-enable-wsl2-part2.bat: This script downloads the Linux kernel update installer required for
-running WSL2, it then runs the installer.
-___
-***Windows 11***  
-> For Windows 11 you can install WSL from the Microsoft Store. Currently in preview here: https://www.microsoft.com/store/productId/9P9TQF7MRM4R
-___
+**Customisation** 
+For those who want to customise or adjust the image in any way, simply build out the bootstrap.sh file in the resources folder. 

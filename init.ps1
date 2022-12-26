@@ -22,15 +22,28 @@ if (-not $installed) {
     dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
     Write-warning " Your machine needs to rebuild"
     sleep 5 
-    Restart-Computer -Confirm
-    
+    Restart-Computer -Confirm 
 }
 
 Write-host "Continuing with build"
 # Setting WSL2 as the default WSL
 wsl --set-default-version 2
-
+sleep 5
 #import and run builder
+Write-warning "Importing builder and running build"
 wsl --import builder .\builderInstall .\resources\builder\alpine-builder.tar.gz --version 2
 wsl -d builder -u root sh -c "resources/builder/build-container.sh %USERNAME%"
 sleep 5
+# import newly built image
+Write-host "Importing new image"
+wsl --import dev-env c:\wsl .\output\dev-env.tar.gz
+wsl --set-default dev-env
+sleep 10
+
+#Cleanup time
+Write-warning "Cleaning up"
+echo Begginging Cleanup
+wsl --unregister builder
+rmdir .\builderInstall
+sleep 10
+exit
