@@ -7,7 +7,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 ARG USER
 
 RUN mkdir -p /scripts
-COPY /resources/bootstrap.sh /scripts
+COPY ./resources/bootstrap.sh /scripts
 WORKDIR /scripts
 RUN chmod +x bootstrap.sh
 RUN ./bootstrap.sh
