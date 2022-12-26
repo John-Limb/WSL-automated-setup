@@ -23,4 +23,14 @@ if (-not $installed) {
     Write-warning " Your machine needs to rebuild"
     sleep 5 
     Restart-Computer -Confirm
+    
 }
+
+Write-host "Continuing with build"
+# Setting WSL2 as the default WSL
+wsl --set-default-version 2
+
+#import and run builder
+wsl --import builder .\builderInstall .\resources\builder\alpine-builder.tar.gz --version 2
+wsl -d builder -u root sh -c "resources/builder/build-container.sh %USERNAME%"
+sleep 5
