@@ -30,8 +30,3 @@ curl -s https://fluxcd.io/install.sh | sudo bash
 
 #Install VS code server
 sudo curl -fsSL https://code-server.dev/install.sh | sh
-
-#install and setup zsh
-apt install zsh
-#install brew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"

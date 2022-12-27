@@ -20,8 +20,10 @@ if (-not $installed) {
     dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
     Write-host "Enable VMPlatform"
     dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
-    Write-warning " Your machine needs to rebuild"
+    Write-warning " Your machine needs to restart"
     sleep 5 
+    $wshell = New-Object -ComObject Wscript.Shell
+    $Output = $wshell.Popup("Your machine needs to reboot!")
     Restart-Computer -Confirm 
 }
 

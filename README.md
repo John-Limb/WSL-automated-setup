@@ -5,8 +5,9 @@
         <td>
 The WSL Automated Setup project is a set of scripts that can make the installation and creation of custom distros for WSL a simple process. It allows a user to create a custom WSL install and tear it down again when no longer needed or broken. 
 
-The purpose of the scripts in this repo are to make the creation of development ready WSL distros easy by 
+The purpose of the scripts in this repository are to make the creation of development ready WSL distros easy by 
 automating the creation of a custom distro using Docker containers.
+Sadly, we have to use an Alpine image from this repo as alpine is not available in WSL repo. 
     </td>
     <td>
     <img src="./resources/images/wsl-preview.jpg"
@@ -39,5 +40,5 @@ This command will enable all of the required components, download the latest Lin
 
 > https://docs.microsoft.com/en-us/windows/wsl/install
 
-**Customisation** 
+## Customisation
 For those who want to customise or adjust the image in any way, simply build out the bootstrap.sh file in the resources folder. 
